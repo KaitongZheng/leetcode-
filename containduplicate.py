@@ -25,4 +25,8 @@ class Solution:
         return False
 查找list中是否存在duplicate
 查找的例子都可以使用hash表降低时间复杂度
+用字典构造Hash表，可以快速查找list中每个元素出现的次数
+        for i, m in enumerate(nums):
+           if _dict.get(target - m) is not None:
+
 '''
