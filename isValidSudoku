@@ -1,3 +1,4 @@
+方法一：
 class Solution(object):
     def isValidSudoku(self, board):
         """
@@ -24,3 +25,29 @@ class Solution(object):
         在list中装入dic组成二位hash表，在三个维度分别判断是否有key（数字）出现的value（次数）大于1
         '''
         
+方法二：
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        # init data
+        rows = [{} for i in range(9)]
+        columns = [{} for i in range(9)]
+        boxes = [{} for i in range(9)]
+        
+        for i in range(0,9):
+            for j in range(0,9):
+                num= board[i][j]                   
+                if num!='.':
+                    box=i/3+3*(j/3)
+                    if num in rows[i]: return False
+                    rows[i][num]=1
+                    if num in columns[j]: return False
+                    columns[j][num]=1
+                    if num in boxes[box]: return False
+                    boxes[box][num]=1
+                           
+        return True
+'''在三个维度分别判断是否有key（数字）出现，没有出现就存入，有出现就报错
