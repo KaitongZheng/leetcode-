@@ -1,0 +1,26 @@
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        # init data
+        rows = [{} for i in range(9)]
+        columns = [{} for i in range(9)]
+        boxes = [{} for i in range(9)]
+        
+        for i in range(0,9):
+            for j in range(0,9):
+                num= board[i][j]#把值作为key存入                   
+                if num!='.':
+                    box=i/3+3*(j/3)#计算位于第几个子数独中
+                    rows[i][num]=rows[i].get(num,0)+1
+                    columns[j][num]=columns[j].get(num,0)+1
+                    boxes[box][num]=boxes[box].get(num,0)+1
+                    if rows[i][num] > 1 or columns[j][num] > 1 or boxes[box][num] > 1:
+                        return False         
+        return True
+        '''
+        在list中装入dic组成二位hash表，在三个维度分别判断是否有key（数字）出现的value（次数）大于1
+        '''
+        
