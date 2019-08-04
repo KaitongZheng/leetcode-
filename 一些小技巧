@@ -1,0 +1,5 @@
+注意函数中传入list如果改变list中的元素list也会改变，如果list=list2只是换了一个标签原来list所指向的数据还是不变。
+
+For I in range(l-1,-1,-1)可以实现倒序循环
+
+列表元素换位: nums[j],nums[i]= nums[i],nums[j]
