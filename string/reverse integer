@@ -1,0 +1,22 @@
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        s=abs(x)
+        s=str(s)
+        print(s)
+        s1=s[::-1]
+        s1=int(s1)
+        print(s1)
+        if s1<2**31-1:
+            if x>0:
+                return s1
+            else: return -s1
+        else: return 0
+        
+        '''
+        用到了字符串切片的方法反转字符串再转成int，最符合人类直观
+        数学法是对10取余数再对result*10加上新的余数，要进行数学判断
+        '''
