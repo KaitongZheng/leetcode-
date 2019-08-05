@@ -1,0 +1,37 @@
+class Solution(object):
+    def rotate(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: None Do not return anything, modify matrix in-place instead.
+        """
+        l=len(matrix)
+        pre=0
+        temp=0
+        i=0#记录开始的行
+        z=0#记录开始的列
+        while i<((l+1)/2):
+            print(i)
+            for j in range (z,l-1-i):
+                fast_x=i
+                fast_y=j
+                print([i,j])
+                pre=matrix[i][j]
+                fast_x,fast_y=fast_y,(l-1)-fast_x
+                print(fast_x,fast_y)
+                while 1:       
+                    
+                    temp=matrix[fast_x][fast_y]
+                    matrix[fast_x][fast_y]=pre
+                    pre=temp
+                    fast_x,fast_y=fast_y,(l-1)-fast_x
+                    print(fast_x,fast_y)
+                    if(fast_x==i and fast_y==j):break
+                matrix[fast_x][fast_y]=pre
+            i+=1
+            z+=1
+        return matrix
+        '''
+        本题用的是从外向内翻转，元素旧的位置和新的位置的关系是fast_x,fast_y=fast_y,(l-1)-fast_x，我使用快慢指针，当快指针回到原地时表示完成了一圈位置转换。
+        但是正方形比较特殊，可以不用快慢指针，直接转换四次完成转换。
+        第一道独立完成的中等难度题目！
+        '''
