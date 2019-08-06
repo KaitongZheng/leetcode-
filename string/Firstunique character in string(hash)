@@ -1,0 +1,32 @@
+class Solution(object):
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        dic={}
+        for i in s:
+            dic[i]=dic.get(i,0)+1
+        for i in s:
+            if dic[i]==1: 
+                print(i)
+                for j,k in enumerate(s):
+                    if k==i:
+                        return j
+        return -1
+        
+        '''
+       自己想的思路和官方的一样，这道题最优的解法就是线性复杂度了，为了保证每个元素是唯一的，至少得把每个字符都遍历一遍。
+
+算法的思路就是遍历一遍字符串，然后把字符串中每个字符出现的次数保存在一个散列表中。这个过程的时间复杂度为 O(N)O(N)，其中 NN 为字符串的长度。
+
+接下来需要再遍历一次字符串，这一次利用散列表来检查遍历的每个字符是不是唯一的。如果当前字符唯一，直接返回当前下标就可以了。第二次遍历的时间复杂度也是 O(N)O(N)。
+但是我自己为了寻找字母在字符串中对应的下标使用了enumerate和循环，官方用 
+        for ch in s:
+            if count[ch] == 1:
+                return index
+            else:
+                index += 1 
+使用Index查询字母在字符串中对应的下标，比较快速
+
+        '''
