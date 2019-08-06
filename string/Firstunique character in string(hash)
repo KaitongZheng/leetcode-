@@ -29,4 +29,9 @@ class Solution(object):
                 index += 1 
 使用Index查询字母在字符串中对应的下标，比较快速
 
+最方便的是用find和index!!!!!!!!!!!!
+s.index(x)：返回字符串中出现x的最左端的索引值，如果不在则抛出valueError异常
+
+s.find(x) ：返回字符串中出现x的最左端字符的索引值，如果不在则返回-1
+
         '''
